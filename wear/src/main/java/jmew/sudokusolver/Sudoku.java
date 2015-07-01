@@ -4,19 +4,19 @@ package jmew.sudokusolver;
  * Created by Mew on 2015-06-21.
  */
 public class Sudoku {
-    public static boolean SolveSudoku(int sudoku[][]) {
+    public static boolean SolveSudoku(int sudokuSolved[][]) {
         for (int currRow = 0; currRow < 9; currRow++) {
             for (int currCol= 0; currCol < 9; currCol++) {
-                if (emptyCellCheck(sudoku, currRow, currCol)) {
+                if (emptyCellCheck(sudokuSolved, currRow, currCol)) {
                     for (int num = 1; num <= 9; num++) {
-                        if (numCheck(sudoku, num, currRow, currCol)){
-                            sudoku[currRow][currCol] = num;
+                        if (numCheck(sudokuSolved, num, currRow, currCol)){
+                            sudokuSolved[currRow][currCol] = num;
 
-                            if (SolveSudoku(sudoku)){
+                            if (SolveSudoku(sudokuSolved)){
                                 return true;
                             }
 
-                            sudoku[currRow][currCol] = 0;
+                            sudokuSolved[currRow][currCol] = 0;
                         }
                     }
                     return false;
@@ -26,21 +26,21 @@ public class Sudoku {
         return true;
     }
 
-    public static boolean emptyCellCheck(int sudoku[][], int row, int col) {
-        if (sudoku[row][col] == 0) {
+    public static boolean emptyCellCheck(int sudokuSolved[][], int row, int col) {
+        if (sudokuSolved[row][col] == 0) {
             return true;
         }
         return false;
     }
 
-    public static boolean numCheck(int sudoku[][], int num, int row, int col) {
+    public static boolean numCheck(int sudokuSolved[][], int num, int row, int col) {
         for (int tempCol = 0; tempCol < 9; tempCol++) { //Check the entire row
-            if (sudoku[row][tempCol] == num) {
+            if (sudokuSolved[row][tempCol] == num) {
                 return false;
             }
         }
         for (int tempRow = 0; tempRow < 9; tempRow++) { //Check the entire column
-            if (sudoku[tempRow][col] == num) {
+            if (sudokuSolved[tempRow][col] == num) {
                 return false;
             }
         }
@@ -48,7 +48,7 @@ public class Sudoku {
             case 1:
                 for (int tempCol = 0; tempCol < 3; tempCol++) {
                     for (int tempRow = 0; tempRow < 3; tempRow++) {
-                        if (sudoku[tempRow][tempCol] == num) {
+                        if (sudokuSolved[tempRow][tempCol] == num) {
                             return false;
                         }
                     }
@@ -57,7 +57,7 @@ public class Sudoku {
             case 2:
                 for (int tempCol = 3; tempCol < 6; tempCol++) {
                     for (int tempRow = 0; tempRow < 3; tempRow++) {
-                        if (sudoku[tempRow][tempCol] == num) {
+                        if (sudokuSolved[tempRow][tempCol] == num) {
                             return false;
                         }
                     }
@@ -66,7 +66,7 @@ public class Sudoku {
             case 3:
                 for (int tempCol = 6; tempCol < 9; tempCol++) {
                     for (int tempRow = 0; tempRow < 3; tempRow++) {
-                        if (sudoku[tempRow][tempCol] == num) {
+                        if (sudokuSolved[tempRow][tempCol] == num) {
                             return false;
                         }
                     }
@@ -75,7 +75,7 @@ public class Sudoku {
             case 4:
                 for (int tempCol = 0; tempCol < 3; tempCol++) {
                     for (int tempRow = 3; tempRow < 6; tempRow++) {
-                        if (sudoku[tempRow][tempCol] == num) {
+                        if (sudokuSolved[tempRow][tempCol] == num) {
                             return false;
                         }
                     }
@@ -84,7 +84,7 @@ public class Sudoku {
             case 5:
                 for (int tempCol = 3; tempCol < 6; tempCol++) {
                     for (int tempRow = 3; tempRow < 6; tempRow++) {
-                        if (sudoku[tempRow][tempCol] == num) {
+                        if (sudokuSolved[tempRow][tempCol] == num) {
                             return false;
                         }
                     }
@@ -93,7 +93,7 @@ public class Sudoku {
             case 6:
                 for (int tempCol = 6; tempCol < 9; tempCol++) {
                     for (int tempRow = 3; tempRow < 6; tempRow++) {
-                        if (sudoku[tempRow][tempCol] == num) {
+                        if (sudokuSolved[tempRow][tempCol] == num) {
                             return false;
                         }
                     }
@@ -102,7 +102,7 @@ public class Sudoku {
             case 7:
                 for (int tempCol = 0; tempCol < 3; tempCol++) {
                     for (int tempRow = 6; tempRow < 9; tempRow++) {
-                        if (sudoku[tempRow][tempCol] == num) {
+                        if (sudokuSolved[tempRow][tempCol] == num) {
                             return false;
                         }
                     }
@@ -111,7 +111,7 @@ public class Sudoku {
             case 8:
                 for (int tempCol = 3; tempCol < 6; tempCol++) {
                     for (int tempRow = 6; tempRow < 9; tempRow++) {
-                        if (sudoku[tempRow][tempCol] == num) {
+                        if (sudokuSolved[tempRow][tempCol] == num) {
                             return false;
                         }
                     }
@@ -120,7 +120,7 @@ public class Sudoku {
             case 9:
                 for (int tempCol = 6; tempCol < 9; tempCol++) {
                     for (int tempRow = 6; tempRow < 9; tempRow++) {
-                        if (sudoku[tempRow][tempCol] == num) {
+                        if (sudokuSolved[tempRow][tempCol] == num) {
                             return false;
                         }
                     }
